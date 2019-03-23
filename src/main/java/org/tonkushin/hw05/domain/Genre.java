@@ -4,25 +4,36 @@ package org.tonkushin.hw05.domain;
  * Жанры книг
  */
 public class Genre {
-    private final int id;           //код в БД
-    private final String name;      //Наименование жанра
+    private int id;           //код в БД
+    private String name;      //Наименование жанра
 
     /**
      * Конструктор класса
-     * @param id код в БД
      * @param name наименование жанра
      */
+    public Genre(String name) {
+        this.name = name;
+    }
+
     public Genre(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
     /**
-     * код в БД
+     * Код в БД
      * @return код в БД
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Код в БД
+     * @param id Код в БД
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -31,5 +42,13 @@ public class Genre {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Наименование жанра
+     * @param name Наименование жанра
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }

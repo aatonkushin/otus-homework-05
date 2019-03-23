@@ -4,15 +4,18 @@ package org.tonkushin.hw05.domain;
  * Авторы книг
  */
 public class Author {
-    private final int id;           //код в БД
-    private final String name;      //Имя автора
+    private int id;           //код в БД
+    private String name;      //Имя автора
 
     /**
      * Конструктор класса
      *
-     * @param id   код в БД
      * @param name имя автора
      */
+    public Author(String name) {
+        this.name = name;
+    }
+
     public Author(int id, String name) {
         this.id = id;
         this.name = name;
@@ -20,7 +23,6 @@ public class Author {
 
     /**
      * код в БД
-     *
      * @return код в БД
      */
     public int getId() {
@@ -29,10 +31,25 @@ public class Author {
 
     /**
      * код в БД
-     *
-     * @return код в БД
+     * @param id код в БД
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Имя автора
+     * @return Имя автора
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Имя автора
+     * @param name Имя автора
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }
