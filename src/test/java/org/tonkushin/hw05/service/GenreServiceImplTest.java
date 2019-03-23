@@ -21,7 +21,7 @@ public class GenreServiceImplTest {
     @Test
     public void count() {
         GenreDao dao = Mockito.mock(GenreDao.class);
-        Mockito.when(dao.count()).thenReturn(3);
+        Mockito.when(dao.count()).thenReturn(3L);
 
         GenreService service = new GenreServiceImpl(dao);
         Assertions.assertThat(service.count()).isGreaterThan(0);
@@ -32,7 +32,7 @@ public class GenreServiceImplTest {
         Genre genre = new Genre(1, "Test Genre");
 
         GenreDao dao = Mockito.mock(GenreDao.class);
-        Mockito.when(dao.insert(genre)).thenReturn(1);
+        Mockito.when(dao.insert(genre)).thenReturn(1L);
 
         GenreService service = new GenreServiceImpl(dao);
         Assertions.assertThat(service.insert(genre)).isEqualTo(genre);
@@ -51,7 +51,7 @@ public class GenreServiceImplTest {
 
     @Test
     public void getAll() {
-        List<Genre> Genres = new ArrayList<Genre>(3);
+        List<Genre> Genres = new ArrayList<>(3);
         for (int i=1; i<=3; i++){
             Genres.add(new Genre(1, "Test Genre"));
         }

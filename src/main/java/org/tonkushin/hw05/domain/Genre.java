@@ -4,7 +4,7 @@ package org.tonkushin.hw05.domain;
  * Жанры книг
  */
 public class Genre {
-    private int id;           //код в БД
+    private long id;           //код в БД
     private String name;      //Наименование жанра
 
     /**
@@ -15,7 +15,7 @@ public class Genre {
         this.name = name;
     }
 
-    public Genre(int id, String name) {
+    public Genre(long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -24,7 +24,7 @@ public class Genre {
      * Код в БД
      * @return код в БД
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -32,7 +32,7 @@ public class Genre {
      * Код в БД
      * @param id Код в БД
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -44,7 +44,7 @@ public class BookDaoJdbcTest {
 
     @Test
     public void getById() {
-        int id = dao.insert(getBook());
+        long id = dao.insert(getBook());
         Assertions.assertThat(dao.getById(id).getName()).isEqualTo("Test Book");
     }
 
@@ -56,7 +56,7 @@ public class BookDaoJdbcTest {
 
     @Test
     public void deleteById() {
-        int id = dao.insert(getBook());
+        long id = dao.insert(getBook());
         dao.deleteById(id);
         Assertions.assertThatExceptionOfType(EmptyResultDataAccessException.class).isThrownBy(() -> {
             dao.getById(id);

@@ -21,7 +21,7 @@ public class BookServiceImplTest {
         AuthorDao authorDao = Mockito.mock(AuthorDao.class);
         GenreDao genreDao = Mockito.mock(GenreDao.class);
 
-        Mockito.when(dao.count()).thenReturn(3);
+        Mockito.when(dao.count()).thenReturn(3L);
 
         BookService service = new BookServiceImpl(dao, authorDao, genreDao);
         Assertions.assertThat(service.count()).isGreaterThan(0);
@@ -35,7 +35,7 @@ public class BookServiceImplTest {
 
         Book book = getBook();
 
-        Mockito.when(dao.insert(book)).thenReturn(1);
+        Mockito.when(dao.insert(book)).thenReturn(1L);
 
         BookService service = new BookServiceImpl(dao, authorDao, genreDao);
         Assertions.assertThat(service.insert(book)).isEqualTo(book);
@@ -48,18 +48,18 @@ public class BookServiceImplTest {
         BookDao dao = Mockito.mock(BookDao.class);
         AuthorDao authorDao = Mockito.mock(AuthorDao.class);
         GenreDao genreDao = Mockito.mock(GenreDao.class);
-        Mockito.when(dao.getById(1)).thenReturn(book);
+        Mockito.when(dao.getById(1L)).thenReturn(book);
 
         BookService service = new BookServiceImpl(dao, authorDao, genreDao);
-        Assertions.assertThat(service.getById(1)).isEqualTo(book);
+        Assertions.assertThat(service.getById(1L)).isEqualTo(book);
     }
 
     @Test
     public void getAll() {
-        List<Book> Books = new ArrayList<Book>(3);
-        for (int i = 1; i <= 3; i++) {
+        List<Book> Books = new ArrayList<>(3);
+        for (long i = 1; i <= 3; i++) {
             Book b = getBook();
-            b.setId(1);
+            b.setId(i);
             Books.add(b);
         }
 
@@ -78,8 +78,8 @@ public class BookServiceImplTest {
     private Book getBook() {
         Book book = new Book();
         book.setName("Test Book");
-        book.setGenre(new Genre(1, "Test Genre"));
-        book.setAuthor(new Author(1, "Test Author"));
+        book.setGenre(new Genre(1L, "Test Genre"));
+        book.setAuthor(new Author(1L, "Test Author"));
 
         return book;
     }

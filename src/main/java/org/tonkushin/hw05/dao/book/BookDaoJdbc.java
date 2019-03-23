@@ -24,13 +24,13 @@ public class BookDaoJdbc implements BookDao {
     }
 
     @Override
-    public int count() {
+    public long count() {
         Map<String, Object> params = new HashMap<>();
-        return jdbc.queryForObject("select count(*) from books", params, Integer.class);
+        return jdbc.queryForObject("select count(*) from books", params, Long.class);
     }
 
     @Override
-    public int insert(Book item) {
+    public long insert(Book item) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         MapSqlParameterSource params = new MapSqlParameterSource();
 
@@ -39,11 +39,11 @@ public class BookDaoJdbc implements BookDao {
         params.addValue("genre_id", item.getGenre().getId());
         jdbc.update("insert into books (`name`, author_id, genre_id) values (:name, :author_id, :genre_id)", params, keyHolder);
 
-        return keyHolder.getKey().intValue();
+        return keyHolder.getKey().longValue();
     }
 
     @Override
-    public Book getById(int id) {
+    public Book getById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
         return jdbc.queryForObject(
                 "select books.id, books.name, author_id, authors.name, genre_id, genres.name " +
@@ -63,7 +63,7 @@ public class BookDaoJdbc implements BookDao {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
         jdbc.update("delete from books where id = :id", params);
     }

@@ -40,7 +40,7 @@ public class AuthorShellController {
     }
 
     @ShellMethod(value = "Удаляет автора с указанным кодом.", key={"delete-author", "da"})
-    public String deleteAuthor(int id){
+    public String deleteAuthor(long id){
         authorService.deleteById(id);
         return "Автор удалён";
     }

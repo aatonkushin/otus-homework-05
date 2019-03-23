@@ -3,13 +3,13 @@ package org.tonkushin.hw05.dao;
 import java.util.List;
 
 public interface Dao<T> {
-    int count();
+    long count();
 
-    int insert(T item);
+    long insert(T item);
 
-    T getById(int id);
+    T getById(long id);
 
     List<T> getAll();
 
-    void deleteById(int id);
+    void deleteById(long id);
 }

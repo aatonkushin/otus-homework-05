@@ -3,13 +3,13 @@ package org.tonkushin.hw05.service;
 import java.util.List;
 
 public interface Service<T> {
-    int count();
+    long count();
 
     T insert(T item);
 
-    T getById(int id);
+    T getById(long id);
 
     List<T> getAll();
 
-    void deleteById(int id);
+    void deleteById(long id);
 }

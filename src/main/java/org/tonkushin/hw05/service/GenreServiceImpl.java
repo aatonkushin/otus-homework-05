@@ -18,20 +18,20 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public int count() {
+    public long count() {
         return dao.count();
     }
 
     @Override
     public Genre insert(Genre item) {
-        int id = dao.insert(item);
+        long id = dao.insert(item);
         item.setId(id);
 
         return item;
     }
 
     @Override
-    public Genre getById(int id) {
+    public Genre getById(long id) {
         return dao.getById(id);
     }
 
@@ -41,7 +41,7 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         dao.deleteById(id);
     }
 }

@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.TestPropertySource;
@@ -26,31 +25,31 @@ public class AuthorDaoJdbcTest {
 
     @Test
     public void count() {
-        dao.insert(new Author(-1, "Test Author"));
+        dao.insert(new Author(-1L, "Test Author"));
         Assertions.assertThat(dao.count()).isGreaterThan(0);
     }
 
     @Test
     public void insert() {
 
-        Assertions.assertThat(dao.insert(new Author(-1, "Test Author"))).isGreaterThan(0);
+        Assertions.assertThat(dao.insert(new Author(-1L, "Test Author"))).isGreaterThan(0);
     }
 
     @Test
     public void getById() {
-        int id = dao.insert(new Author(-1, "Test Author"));
+        long id = dao.insert(new Author("Test Author"));
         Assertions.assertThat(dao.getById(id).getName()).isEqualTo("Test Author");
     }
 
     @Test
     public void getAll() {
-        dao.insert(new Author(-1, "Test Author"));
+        dao.insert(new Author("Test Author"));
         Assertions.assertThat(dao.getAll().isEmpty()).isFalse();
     }
 
     @Test
     public void deleteById() {
-        int id = dao.insert(new Author(-1, "Test Author"));
+        long id = dao.insert(new Author( "Test Author"));
         dao.deleteById(id);
         Assertions.assertThatExceptionOfType(EmptyResultDataAccessException.class).isThrownBy(() -> {
             dao.getById(id);

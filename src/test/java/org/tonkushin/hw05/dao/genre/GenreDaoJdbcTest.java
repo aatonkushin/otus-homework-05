@@ -44,7 +44,7 @@ public class GenreDaoJdbcTest {
     @Rollback
     @Transactional
     public void getById() {
-        int id = dao.insert(new Genre(-1, "Test Genre"));
+        long id = dao.insert(new Genre("Test Genre"));
         Assertions.assertThat(dao.getById(id).getName()).isEqualTo("Test Genre");
     }
 
@@ -52,7 +52,7 @@ public class GenreDaoJdbcTest {
     @Rollback
     @Transactional
     public void getAll() {
-        dao.insert(new Genre(-1, "Test Genre"));
+        dao.insert(new Genre("Test Genre"));
         Assertions.assertThat(dao.getAll().isEmpty()).isFalse();
     }
 
@@ -60,7 +60,7 @@ public class GenreDaoJdbcTest {
     @Rollback
     @Transactional
     public void deleteById() {
-        int id = dao.insert(new Genre(-1, "Test Genre"));
+        long id = dao.insert(new Genre( "Test Genre"));
         dao.deleteById(id);
         Assertions.assertThatExceptionOfType(EmptyResultDataAccessException.class).isThrownBy(() -> {
             dao.getById(id);

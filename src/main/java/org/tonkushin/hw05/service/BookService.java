@@ -9,5 +9,5 @@ public interface BookService extends Service<Book> {
      * @param authorId код автора
      * @param genreId код жанра
      */
-    void insert(String name, int authorId, int genreId);
+    void insert(String name, long authorId, long genreId);
 }

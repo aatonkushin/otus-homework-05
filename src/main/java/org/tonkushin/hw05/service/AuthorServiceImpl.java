@@ -18,20 +18,20 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public int count() {
+    public long count() {
         return dao.count();
     }
 
     @Override
     public Author insert(Author item) {
-        int id = dao.insert(item);
+        long id = dao.insert(item);
         item.setId(id);
 
         return item;
     }
 
     @Override
-    public Author getById(int id) {
+    public Author getById(long id) {
 
         return dao.getById(id);
     }
@@ -42,7 +42,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         dao.deleteById(id);
     }
 }

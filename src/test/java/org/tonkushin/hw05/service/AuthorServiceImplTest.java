@@ -20,7 +20,7 @@ public class AuthorServiceImplTest {
     @Test
     public void count() {
         AuthorDao dao = Mockito.mock(AuthorDao.class);
-        Mockito.when(dao.count()).thenReturn(3);
+        Mockito.when(dao.count()).thenReturn(3L);
 
         AuthorService service = new AuthorServiceImpl(dao);
         Assertions.assertThat(service.count()).isGreaterThan(0);
@@ -28,10 +28,10 @@ public class AuthorServiceImplTest {
 
     @Test
     public void insert() {
-        Author author = new Author(1, "Test Author");
+        Author author = new Author(1L, "Test Author");
 
         AuthorDao dao = Mockito.mock(AuthorDao.class);
-        Mockito.when(dao.insert(author)).thenReturn(1);
+        Mockito.when(dao.insert(author)).thenReturn(1L);
 
         AuthorService service = new AuthorServiceImpl(dao);
         Assertions.assertThat(service.insert(author)).isEqualTo(author);
@@ -39,20 +39,20 @@ public class AuthorServiceImplTest {
 
     @Test
     public void getById() {
-        Author author = new Author(1, "Test Author");
+        Author author = new Author(1L, "Test Author");
 
         AuthorDao dao = Mockito.mock(AuthorDao.class);
-        Mockito.when(dao.getById(1)).thenReturn(author);
+        Mockito.when(dao.getById(1L)).thenReturn(author);
 
         AuthorService service = new AuthorServiceImpl(dao);
-        Assertions.assertThat(service.getById(1)).isEqualTo(author);
+        Assertions.assertThat(service.getById(1L)).isEqualTo(author);
     }
 
     @Test
     public void getAll() {
-        List<Author> authors = new ArrayList<Author>(3);
-        for (int i=1; i<=3; i++){
-            authors.add(new Author(1, "Test Author"));
+        List<Author> authors = new ArrayList<>(3);
+        for (long i=1; i<=3; i++){
+            authors.add(new Author(i, "Test Author"));
         }
 
         AuthorDao dao = Mockito.mock(AuthorDao.class);
@@ -60,6 +60,6 @@ public class AuthorServiceImplTest {
 
         AuthorService service = new AuthorServiceImpl(dao);
 
-        Assertions.assertThat(service.getAll().size()).isEqualTo(3);
+        Assertions.assertThat(service.getAll().size()).isEqualTo(3L);
     }
 }

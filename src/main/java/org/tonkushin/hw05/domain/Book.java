@@ -4,7 +4,7 @@ package org.tonkushin.hw05.domain;
  * Книга
  */
 public class Book {
-    private int id;           //код в БД
+    private long id;           //код в БД
     private String name;      //Наименование книги
     private Genre genre;      //жанр книги
     private Author author;    //автор книги
@@ -20,18 +20,18 @@ public class Book {
      * @param genre  жанр книги
      * @param author автор книги
      */
-    public Book(int id, String name, Genre genre, Author author) {
+    public Book(long id, String name, Genre genre, Author author) {
         this.id = id;
         this.name = name;
         this.genre = genre;
         this.author = author;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -38,7 +38,7 @@ public class GenreShellController {
     }
 
     @ShellMethod(value = "Удаляет жанр с указанным кодом.", key={"delete-genre", "dg"})
-    public String deleteGenre(int id){
+    public String deleteGenre(long id){
         service.deleteById(id);
         return "Жанр удалён";
     }

@@ -4,7 +4,7 @@ package org.tonkushin.hw05.domain;
  * Авторы книг
  */
 public class Author {
-    private int id;           //код в БД
+    private long id;           //код в БД
     private String name;      //Имя автора
 
     /**
@@ -16,7 +16,7 @@ public class Author {
         this.name = name;
     }
 
-    public Author(int id, String name) {
+    public Author(long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -25,7 +25,7 @@ public class Author {
      * код в БД
      * @return код в БД
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -33,7 +33,7 @@ public class Author {
      * код в БД
      * @param id код в БД
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

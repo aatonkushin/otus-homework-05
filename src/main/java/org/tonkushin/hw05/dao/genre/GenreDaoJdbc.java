@@ -23,22 +23,22 @@ public class GenreDaoJdbc implements GenreDao {
     }
 
     @Override
-    public int count() {
+    public long count() {
         Map<String, Object> params = new HashMap<>();
-        return jdbc.queryForObject("select count(*) from genres", params, Integer.class);
+        return jdbc.queryForObject("select count(*) from genres", params, Long.class);
     }
 
     @Override
-    public int insert(Genre item) {
+    public long insert(Genre item) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("name", item.getName());
         jdbc.update("insert into genres (`name`) values (:name)", params, keyHolder);
-        return keyHolder.getKey().intValue();
+        return keyHolder.getKey().longValue();
     }
 
     @Override
-    public Genre getById(int id) {
+    public Genre getById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
         return jdbc.queryForObject("select * from genres where id = :id", params, new GenreMapper());
     }
@@ -50,7 +50,7 @@ public class GenreDaoJdbc implements GenreDao {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
         jdbc.update("delete from genres where id = :id", params);
     }

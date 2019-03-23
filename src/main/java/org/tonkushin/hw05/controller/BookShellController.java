@@ -34,13 +34,13 @@ public class BookShellController {
     }
 
     @ShellMethod(value = "Добавляет книгу с названием name, автором с кодом authorId и жанром с кодом genreId", key = {"add-book", "ab"})
-    public String addBook(String name, int authorId, int genreId) {
+    public String addBook(String name, long authorId, long genreId) {
         service.insert(name, authorId, genreId);
         return "Книга с названием '" + name + "' добавлена";
     }
 
     @ShellMethod(value = "Удаляет книгу с указанным кодом.", key={"delete-book", "db"})
-    public String deleteBook(int id) {
+    public String deleteBook(long id) {
         service.deleteById(id);
         return "Книга удалена";
     }
