@@ -15,7 +15,6 @@ import org.tonkushin.hw05.domain.Author;
 
 @RunWith(SpringRunner.class)
 @JdbcTest
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
 @Import(AuthorDaoJdbc.class)
 @TestPropertySource("/test.properties")
 public class AuthorDaoJdbcTest {

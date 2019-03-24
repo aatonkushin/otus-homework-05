@@ -17,7 +17,6 @@ import org.tonkushin.hw05.domain.Genre;
 
 @RunWith(SpringRunner.class)
 @JdbcTest
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
 @Import(GenreDaoJdbc.class)
 @TestPropertySource("/test.properties")
 public class GenreDaoJdbcTest {
@@ -26,7 +25,6 @@ public class GenreDaoJdbcTest {
     private GenreDao dao;
 
     @Test
-    @Rollback
     @Transactional
     public void count() {
         dao.insert(new Genre(-1, "Test Genre"));
@@ -34,14 +32,12 @@ public class GenreDaoJdbcTest {
     }
 
     @Test
-    @Rollback
     @Transactional
     public void insert() {
         Assertions.assertThat(dao.insert(new Genre(-1, "Test Genre"))).isGreaterThan(0);
     }
 
     @Test
-    @Rollback
     @Transactional
     public void getById() {
         long id = dao.insert(new Genre("Test Genre"));
@@ -49,7 +45,6 @@ public class GenreDaoJdbcTest {
     }
 
     @Test
-    @Rollback
     @Transactional
     public void getAll() {
         dao.insert(new Genre("Test Genre"));
@@ -57,7 +52,6 @@ public class GenreDaoJdbcTest {
     }
 
     @Test
-    @Rollback
     @Transactional
     public void deleteById() {
         long id = dao.insert(new Genre( "Test Genre"));

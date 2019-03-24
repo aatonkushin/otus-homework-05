@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @JdbcTest
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
 @Import(BookDaoJdbc.class)
 @TestPropertySource("/test.properties")
 public class BookDaoJdbcTest {
